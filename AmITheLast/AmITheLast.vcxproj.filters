@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\States">
+      <UniqueIdentifier>{fb65a8da-dcbd-4db5-ab4a-c0a6ec905043}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\States">
+      <UniqueIdentifier>{f3e8dac8-8e06-483c-a704-140d329ce8ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entity">
+      <UniqueIdentifier>{5f0dec51-4536-40ba-bc25-5c728cc31391}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entity">
+      <UniqueIdentifier>{31090ac0-c7e3-4a07-a2f5-af737cb5c1fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Players">
+      <UniqueIdentifier>{1780e3c9-dfeb-4b72-9324-b9fdd90b9b11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Components">
+      <UniqueIdentifier>{29f9dd17-2b02-4044-97c4-46ad0b68ea0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components">
+      <UniqueIdentifier>{3d2af2d8-c995-4ad4-8bd1-ae119687de0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utilitary">
+      <UniqueIdentifier>{0286941b-6b9a-4433-8921-adaec62d8cfd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utilitary">
+      <UniqueIdentifier>{473645ef-ffb4-4465-bfae-3630b4cdda5c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TestState.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="State.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Source Files\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetImporter.cpp">
+      <Filter>Source Files\Utilitary</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestState.h">
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetImporter.h">
+      <Filter>Header Files\Utilitary</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\Lady.png">
+      <Filter>Resource Files\Players</Filter>
+    </Image>
+    <Image Include="Assets\Lady_Dino.png">
+      <Filter>Resource Files\Players</Filter>
+    </Image>
+    <Image Include="Assets\Lady_Knight.png">
+      <Filter>Resource Files\Players</Filter>
+    </Image>
+    <Image Include="Assets\Lady_Mage.png">
+      <Filter>Resource Files\Players</Filter>
+    </Image>
+    <Image Include="Assets\Sir.png">
+      <Filter>Resource Files\Players</Filter>
+    </Image>
+    <Image Include="Assets\Sir_Dino.png">
+      <Filter>Resource Files\Players</Filter>
+    </Image>
+    <Image Include="Assets\Sir_Knight.png">
+      <Filter>Resource Files\Players</Filter>
+    </Image>
+    <Image Include="Assets\Sir_Mage.png">
+      <Filter>Resource Files\Players</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
