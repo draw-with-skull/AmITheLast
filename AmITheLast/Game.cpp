@@ -71,13 +71,13 @@ void Game::Run()
 void Game::InitWindow()
 {
 	this->Window = new sf::RenderWindow(sf::VideoMode(this->WindowSize.x,this->WindowSize.y), "Knight's Dangeon");
-	
-	const sf::View view(sf::Vector2f(this->WindowSize / this->PixelSize), sf::Vector2f(this->WindowSize/ this->PixelSize));
-	this->Window->setView(view);
+	this->View.setSize(sf::Vector2f(this->WindowSize / this->PixelSize));
+	this->View.setCenter(sf::Vector2f(this->WindowSize / this->PixelSize));
+	this->Window->setView(this->View);
 	this->Window->setFramerateLimit(120);
 }
 
 void Game::InitStates()
 {
-	this->states.push(new TestState(this->Window));
+	this->states.push(new TestState(this->Window,&this->View));
 }

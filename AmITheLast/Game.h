@@ -8,13 +8,7 @@
 class Game
 {
 private:
-	sf::RenderWindow *Window;
-	sf::Event SfEvent;
-	sf::Clock Clock;
 
-	std::stack<State*> states;
-
-	float Dt;
 public:
 	Game();
 	virtual ~Game();
@@ -27,8 +21,18 @@ public:
 private:
 	void InitWindow();
 	void InitStates();
+
+
 	const sf::Vector2u WindowSize{ 1600u, 900u };
+	sf::RenderWindow* Window;
+	sf::Event SfEvent;
+	sf::Clock Clock;
+	sf::View View;
+	std::stack<State*> states;
+	
 	const unsigned int PixelSize{ 3u };
+	float Dt;
+
 };
 
 #endif

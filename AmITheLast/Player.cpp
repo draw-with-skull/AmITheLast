@@ -26,6 +26,11 @@ void Player::Render(sf::RenderTarget* target)
 	this->Animations->Render(target);
 }
 
+sf::Vector2f Player::GetPosition()
+{
+	return this->Position;
+}
+
 
 
 void Player::UpdateState()
