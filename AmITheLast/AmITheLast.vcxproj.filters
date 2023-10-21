@@ -40,6 +40,12 @@
     <Filter Include="Source Files\Utilitary">
       <UniqueIdentifier>{473645ef-ffb4-4465-bfae-3630b4cdda5c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Managers">
+      <UniqueIdentifier>{d9ab3889-369d-433c-9eb9-e3a4e7061731}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Managers">
+      <UniqueIdentifier>{66dfa1f2-121a-499f-b6b4-6808accf4089}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -66,6 +72,9 @@
     <ClCompile Include="AssetImporter.cpp">
       <Filter>Source Files\Utilitary</Filter>
     </ClCompile>
+    <ClCompile Include="AnimationManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -88,6 +97,12 @@
     </ClInclude>
     <ClInclude Include="AssetImporter.h">
       <Filter>Header Files\Utilitary</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationManager.h">
+      <Filter>Header Files\Managers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -118,5 +133,10 @@
     <Image Include="Assets\Sir_Mage.png">
       <Filter>Resource Files\Players</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="AmITheLast.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

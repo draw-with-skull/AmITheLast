@@ -1,15 +1,15 @@
 #ifndef ASSETIMPORTER_H
 #define ASSETIMPORTER_H
 #include<SFML/Graphics.hpp>
+enum AssetType
+{
+	CHARACTER,
+	ENEMY,
+	ITEM,
+};
 class AssetImporter
 {
-public:
-	enum AssetType
-	{
-		CHARACTER,
-		ENEMY,
-		ITEM,
-	};
+
 public:
 	AssetImporter();
 	virtual ~AssetImporter();
