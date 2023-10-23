@@ -134,25 +134,25 @@
     <ClCompile Include="src\Components\Animation.cpp" />
     <ClCompile Include="src\Managers\AnimationManager.cpp" />
     <ClCompile Include="src\Utilitary\AssetImporter.cpp" />
-    <ClCompile Include="src\Entity.cpp" />
+    <ClCompile Include="src\Components\Entity.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="src\Player.cpp" />
+    <ClCompile Include="src\Entity\Player.cpp" />
     <ClCompile Include="src\Room.cpp" />
-    <ClCompile Include="src\State.cpp" />
-    <ClCompile Include="src\TestState.cpp" />
+    <ClCompile Include="src\Components\State.cpp" />
+    <ClCompile Include="src\States\TestState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Components\Animation.h" />
     <ClInclude Include="src\Managers\AnimationManager.h" />
     <ClInclude Include="src\Utilitary\AssetImporter.h" />
-    <ClInclude Include="src\Entity.h" />
+    <ClInclude Include="src\Components\Entity.h" />
     <ClInclude Include="src\Game.h" />
-    <ClInclude Include="src\Player.h" />
+    <ClInclude Include="src\Entity\Player.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="src\Room.h" />
-    <ClInclude Include="src\State.h" />
-    <ClInclude Include="src\TestState.h" />
+    <ClInclude Include="src\Components\State.h" />
+    <ClInclude Include="src\States\TestState.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\cpp.hint" />
