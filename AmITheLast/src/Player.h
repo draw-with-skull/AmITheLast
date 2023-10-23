@@ -1,6 +1,6 @@
 #pragma once
 #include "Entity.h"
-#include "AnimationManager.h"
+#include "Managers/AnimationManager.h"
 
 class Player : Entity
 {

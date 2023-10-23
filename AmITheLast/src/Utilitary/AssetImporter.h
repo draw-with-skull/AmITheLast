@@ -6,6 +6,7 @@ enum AssetType
 	CHARACTER,
 	ENEMY,
 	ITEM,
+	ROOM,
 };
 class AssetImporter
 {

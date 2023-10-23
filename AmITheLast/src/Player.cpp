@@ -69,8 +69,8 @@ void Player::UpdatePosition(const float&dt)
 void Player::Init()
 {
 	this->MovementSpeed = 200;
-	this->Position.x = 300;
-	this->Position.y = 300;
+	this->Position.x = 10;
+	this->Position.y = 10;
 
 	this->Texture = AssetImporter().ImportTexture("Lady_Dino", AssetType::CHARACTER);
 	this->Sprite.setTexture(this->Texture);
@@ -80,5 +80,5 @@ void Player::Init()
 void Player::InitAnimations()
 {
 	this->Animations->AddAnimation(AnimationState::IDLE, 4, 0, 0.15, false);
-	this->Animations->AddAnimation(AnimationState::WALKING, 5, 1, 0.15, false);
+	this->Animations->AddAnimation(AnimationState::WALKING, 5, 1, 0.10, false);
 }

@@ -1,7 +1,7 @@
 #ifndef ANIMATIONMANAGER_H
 #define ANIMATIONMANAGER_H
 #include<map>
-#include"Animation.h"
+#include "Components/Animation.h"
 enum class AnimationState
 	{
 		IDLE,
@@ -26,4 +26,5 @@ private:
 	unsigned short FrameHeight;
 };
 #endif
+
 

@@ -15,15 +15,11 @@ sf::Texture AssetImporter::ImportTexture(std::string AssetName, AssetType Type)
 	sf::Texture texture;
 	switch (Type)
 	{
-	case CHARACTER:
-		texturePath += "Character/";
-		break;
-	case ENEMY:
-		break;
-	case ITEM:
-		break;
-	default:
-		break;
+	case CHARACTER:texturePath += "Character/";break;
+	case ENEMY:break;
+	case ITEM:break;
+	case ROOM:texturePath += "Room/"; break;
+	default:break;
 	}
 	texture.loadFromFile(texturePath + AssetName + extension);
 	return texture;

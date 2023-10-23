@@ -2,6 +2,7 @@
 #define TESTSTATE_H
 #include "State.h"
 #include "Player.h"
+#include"Room.h"
 class TestState :public State
 {
 public:
@@ -14,6 +15,7 @@ public:
 private:
     Player Player;
     sf::View* View;
+    Room* Level;
 };
 #endif
 

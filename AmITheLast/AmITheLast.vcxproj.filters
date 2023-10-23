@@ -51,62 +51,68 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
+    <ClCompile Include="src\Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TestState.cpp">
+    <ClCompile Include="src\TestState.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
-    <ClCompile Include="State.cpp">
+    <ClCompile Include="src\State.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
-    <ClCompile Include="Entity.cpp">
+    <ClCompile Include="src\Entity.cpp">
       <Filter>Source Files\Entity</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
+    <ClCompile Include="src\Player.cpp">
       <Filter>Source Files\Entity</Filter>
     </ClCompile>
-    <ClCompile Include="Animation.cpp">
+    <ClCompile Include="src\Components\Animation.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
-    <ClCompile Include="AssetImporter.cpp">
+    <ClCompile Include="src\Utilitary\AssetImporter.cpp">
       <Filter>Source Files\Utilitary</Filter>
     </ClCompile>
-    <ClCompile Include="AnimationManager.cpp">
+    <ClCompile Include="src\Managers\AnimationManager.cpp">
       <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Room.cpp">
+      <Filter>Source Files\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.h">
+    <ClInclude Include="src\Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TestState.h">
+    <ClInclude Include="src\TestState.h">
       <Filter>Header Files\States</Filter>
     </ClInclude>
-    <ClInclude Include="State.h">
+    <ClInclude Include="src\State.h">
       <Filter>Header Files\States</Filter>
     </ClInclude>
-    <ClInclude Include="Entity.h">
+    <ClInclude Include="src\Entity.h">
       <Filter>Header Files\Entity</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
+    <ClInclude Include="src\Player.h">
       <Filter>Header Files\Entity</Filter>
     </ClInclude>
-    <ClInclude Include="Animation.h">
+    <ClInclude Include="src\Components\Animation.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="AssetImporter.h">
+    <ClInclude Include="src\Utilitary\AssetImporter.h">
       <Filter>Header Files\Utilitary</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AnimationManager.h">
+    <ClInclude Include="src\Managers\AnimationManager.h">
       <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Room.h">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="cpp.hint" />
+    <None Include="src\cpp.hint" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Lady.png">

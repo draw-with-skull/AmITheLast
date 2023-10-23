@@ -76,6 +76,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>D:\VS projects\AmITheLast\AmITheLast\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -90,6 +91,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>D:\VS projects\AmITheLast\AmITheLast\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -104,6 +106,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>D:\VS projects\AmITheLast\AmITheLast\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -118,6 +121,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>D:\VS projects\AmITheLast\AmITheLast\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,29 +131,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Animation.cpp" />
-    <ClCompile Include="AnimationManager.cpp" />
-    <ClCompile Include="AssetImporter.cpp" />
-    <ClCompile Include="Entity.cpp" />
-    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="src\Components\Animation.cpp" />
+    <ClCompile Include="src\Managers\AnimationManager.cpp" />
+    <ClCompile Include="src\Utilitary\AssetImporter.cpp" />
+    <ClCompile Include="src\Entity.cpp" />
+    <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="State.cpp" />
-    <ClCompile Include="TestState.cpp" />
+    <ClCompile Include="src\Player.cpp" />
+    <ClCompile Include="src\Room.cpp" />
+    <ClCompile Include="src\State.cpp" />
+    <ClCompile Include="src\TestState.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Animation.h" />
-    <ClInclude Include="AnimationManager.h" />
-    <ClInclude Include="AssetImporter.h" />
-    <ClInclude Include="Entity.h" />
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="Player.h" />
+    <ClInclude Include="src\Components\Animation.h" />
+    <ClInclude Include="src\Managers\AnimationManager.h" />
+    <ClInclude Include="src\Utilitary\AssetImporter.h" />
+    <ClInclude Include="src\Entity.h" />
+    <ClInclude Include="src\Game.h" />
+    <ClInclude Include="src\Player.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="State.h" />
-    <ClInclude Include="TestState.h" />
+    <ClInclude Include="src\Room.h" />
+    <ClInclude Include="src\State.h" />
+    <ClInclude Include="src\TestState.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="cpp.hint" />
+    <None Include="src\cpp.hint" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Lady.png" />
