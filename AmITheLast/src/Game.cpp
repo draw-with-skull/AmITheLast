@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Game.h"
-#include "TestState.h"
+#include "States/TestState.h"
 
 Game::Game()
 {

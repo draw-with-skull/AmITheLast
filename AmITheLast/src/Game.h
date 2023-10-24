@@ -4,7 +4,7 @@
 #include<SFML/Window.hpp>
 #include<SFML/System.hpp>
 #include<stack>
-#include "State.h"
+#include "Components/State.h"
 class Game
 {
 private:
