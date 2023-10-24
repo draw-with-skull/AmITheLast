@@ -75,9 +75,6 @@
     <ClCompile Include="src\Managers\AnimationManager.cpp">
       <Filter>Source Files\Managers</Filter>
     </ClCompile>
-    <ClCompile Include="src\Room.cpp">
-      <Filter>Source Files\Components</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game.h">
@@ -106,9 +103,6 @@
     </ClInclude>
     <ClInclude Include="src\Managers\AnimationManager.h">
       <Filter>Header Files\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Room.h">
-      <Filter>Header Files\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
