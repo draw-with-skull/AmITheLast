@@ -2,6 +2,9 @@
 #define TESTSTATE_H
 #include "Components/State.h"
 #include "Entity/Player.h"
+#include "Components/TileMap.h"
+#include <Components/MapGenerator.h>
+
 class TestState :public State
 {
 public:
@@ -13,7 +16,11 @@ public:
 
 private:
     Player Player;
-    sf::View* View;
+    TileMap *Room;
+    sf::View* View; 
+    sf::Texture RoomTexture;
+    MapGenerator* MapG;
+    
 };
 #endif
 
