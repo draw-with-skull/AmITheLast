@@ -149,38 +149,65 @@ void MapGenerator::GenerateCorridors(sf::Vector2u StartPoint, sf::Vector2u EndPo
 
 void MapGenerator::GenerateWalls()
 {
-    for(unsigned int i=0;i<MapW;i++)
-        for(unsigned int j=0;j<MapH;j++)
+    for(unsigned int i=1;i<MapW-1;i++)
+        for(unsigned int j=1;j<MapH-1;j++)
         {
             
             if (Map[i + j * MapW] == FLOOR)
             {
                 //Walls
-                if (Map[(i + j * MapW) - MapW] == BLANK)
-                    Map[(i + j * MapW) - MapW] = TOP_WALL;
-
-                if (Map[(i + j * MapW) + MapW] == BLANK)
-                    Map[(i + j * MapW) + MapW] = BOTTOM_WALL;
-
+                
                 if (Map[(i + j * MapW) - 1] == BLANK)
+                {
                     Map[(i + j * MapW) - 1] = LEFT_WALL;
-
+                }
                 if (Map[(i + j * MapW) + 1] == BLANK)
+                {
                     Map[(i + j * MapW) + 1] = RIGHT_WALL;
-                //Corners
-
+                }
+                if (Map[(i + j * MapW) - MapW] == BLANK)
+                {
+                    Map[(i + j * MapW) - MapW] = TOP_WALL;
+                }
+                if (Map[(i + j * MapW) + MapW] == BLANK)
+                {
+                    Map[(i + j * MapW) + MapW] = BOTTOM_WALL;
+                }
+                //topcorners
                 if (Map[(i + j * MapW) - 1 - MapW] == BLANK)
-                  Map[(i + j * MapW) - 1 - MapW] = TOP_LEFT_CORNER;
-
-                if (Map[(i + j * MapW) + 1 - MapW] == BLANK && Map[(i + j * MapW) + 1]!= FLOOR)
+                {
+                    Map[(i + j * MapW) - 1 - MapW] = TOP_LEFT_CORNER;
+                }
+                if (Map[(i + j * MapW) + 1 - MapW] == BLANK && Map[(i + j * MapW) + 1] != FLOOR)
+                {
                     Map[(i + j * MapW) + 1 - MapW] = TOP_RIGHT_CORNER;
+                }
+                //bottom corners
+                if (Map[(i + j * MapW) - 1 + MapW] == BLANK&& Map[(i + j * MapW) +MapW]!=FLOOR) {
+                    Map[(i + j * MapW) - 1 + MapW]= RIGHT_TOP_CORNER;
+                }
+                if (Map[(i + j * MapW) + 1 + MapW] == BLANK && Map[(i + j * MapW) + 1] != FLOOR && Map[(i + j * MapW) + MapW] != FLOOR) {
+                    Map[(i + j * MapW) + 1 + MapW] = LEFT_TOP_CORNER;
+                }
+                if (Map[(i + j * MapW) + 1] == FLOOR && Map[(i + j * MapW) + MapW] == FLOOR&& Map[(i + j * MapW) + 1 + MapW]!=FLOOR) {
+                    Map[(i + j * MapW) + 1 + MapW] = RIGHT_BOTTOM_CORNER;
+                }
+                if (Map[(i + j * MapW) - 1] == FLOOR && Map[(i + j * MapW) + MapW] == FLOOR && Map[(i + j * MapW) - 1 + MapW] != FLOOR) {
+                    Map[(i + j * MapW) - 1 + MapW] = LEFT_BOTTOM_CORNER;
+                }
 
-                //if (Map[(i + j * MapW) - 1 + MapW] == BLANK)
-                //    Map[(i + j * MapW) - 1 + MapW] = BOTTOM_LEFT_CORNER;
 
-                //if (Map[(i + j * MapW) + 1 + MapW] == BLANK && Map[(i + j * MapW) - 1] != FLOOR)
-                //    Map[(i + j * MapW) + 1 + MapW] = BOTTOM_RIGHT_CONRNER;
+
+
+               
             }
+            
+            //Nasty Wall Bug; Temp fix
+            if (Map[(i + j * MapW)] == RIGHT_WALL && Map[(i + j * MapW)-1] == FLOOR&& Map[(i + j * MapW) +MapW]==FLOOR)
+            {
+                Map[(i + j * MapW)] = TOP_WALL;
+            }
+           
         }
 }
 
