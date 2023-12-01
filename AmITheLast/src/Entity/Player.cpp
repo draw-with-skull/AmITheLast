@@ -69,8 +69,8 @@ void Player::UpdatePosition(const float&dt)
 void Player::Init()
 {
 	this->MovementSpeed = 200;
-	this->Position.x = 10;
-	this->Position.y = 10;
+	this->Position.x = 200;
+	this->Position.y = 200;
 
 	this->Texture = AssetImporter().ImportTexture("Lady_Dino", AssetType::CHARACTER);
 	this->Sprite.setTexture(this->Texture);

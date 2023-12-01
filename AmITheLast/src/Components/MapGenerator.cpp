@@ -17,13 +17,18 @@ MapGenerator::MapGenerator(unsigned int width, unsigned int height, unsigned int
     }
 }
 
+MapGenerator::~MapGenerator()
+{
+    delete this->Map;
+}
+
 int* MapGenerator::Generate()
 {
     GenerateDefaultTileMapping();
 
     GenerateFloor();
-    //FixFloors();
-    //GenerateWalls();
+    FixFloors();
+    GenerateWalls();
     return Map;
 }
 
@@ -52,7 +57,7 @@ unsigned int MapGenerator::GetBufferSize()
 
 void MapGenerator::GenerateFloor()
 {
-    int RoomsCount = 5;// rand() % 5 + 5;
+    int RoomsCount =  rand() % 5 + 5;
 
     //generate Rooms at randome 
     for (int i = 0; i < RoomsCount; i++)
@@ -80,14 +85,11 @@ void MapGenerator::GenerateFloor()
             }
     }
     //Generate corridors
-    std::cout << RoomsConnections.size() << "\n";
 
     for (int i = 0; i < RoomsConnections.size()-1; i++) {
-      
-        //std::cout << RoomsConnections[i].x << " " << RoomsConnections[i].x << " ";
-        //std::cout << RoomsConnections[i].x * MapW + RoomsConnections[i].y << "\n";
-        Map[RoomsConnections[i].x * MapW + RoomsConnections[i].y] = NO_TEXTURE;
-        Map[RoomsConnections[i+1].x * MapW + RoomsConnections[i+1].y] = NO_TEXTURE;
+
+        Map[RoomsConnections[i].x * MapW + RoomsConnections[i].y] = FLOOR;
+        Map[RoomsConnections[i+1].x * MapW + RoomsConnections[i+1].y] = FLOOR;
 
         GenerateCorridors(RoomsConnections[i], RoomsConnections[i + 1]);
 
@@ -114,24 +116,35 @@ void MapGenerator::FixFloors()
 
 void MapGenerator::GenerateCorridors(sf::Vector2u StartPoint, sf::Vector2u EndPoint)
 {
-    if (StartPoint.x > EndPoint.y) {
-        //<-
-        if (StartPoint.y > EndPoint.y) {
-            //to top
-        }
-        else {
-            //to bottom
+    //x e in jos si y e la dreapta 
+    
+    
+    int FinalPoint=0;
+
+    if (StartPoint.y < EndPoint.y) {
+        for (int i = 0; i <= EndPoint.y - StartPoint.y; i++) {
+            Map[MapW * StartPoint.x + StartPoint.y +i] = FLOOR;
+            FinalPoint = StartPoint.y+ i;
         }
     }
     else {
-        //->
-        if (StartPoint.y > EndPoint.y) {
-            //to top
-        }
-        else {
-            //to bottom
+        for (int i = 0; i <= StartPoint.y-EndPoint.y; i++) {
+            Map[MapW * EndPoint.x + EndPoint.y + i] = FLOOR;
+            FinalPoint = EndPoint.y+ i;
         }
     }
+
+    if (StartPoint.x < EndPoint.x) {
+        for (int i = 0; i < EndPoint.x - StartPoint.x; i++) {
+            Map[MapW *(i+StartPoint.x) + FinalPoint] = FLOOR;
+        }
+    }
+    else {
+        for (int i = 0; i < StartPoint.x - EndPoint.x; i++) {
+            Map[MapW * (i+EndPoint.x) + FinalPoint] = FLOOR;
+        }
+    }
+    
 }
 
 void MapGenerator::GenerateWalls()

@@ -30,6 +30,7 @@ public:
     };
 
     MapGenerator(unsigned int width, unsigned int height, unsigned int tileWidth, unsigned int tileHeight);
+    virtual ~MapGenerator();
 	int* Generate();
 	void MapTiles(std::map<MAPCOMPONENTS,sf::Vector2f>mapping);
 
