@@ -4,6 +4,7 @@
 MapGenerator::MapGenerator(unsigned int width, unsigned int height, unsigned int tileWidth, unsigned int tileHeight)
 {
     srand((unsigned int)time(NULL));
+    FloorTiles = 0;
     RoomsConnections.clear();
     this->MapH = height;
     this->MapW = width;
@@ -28,6 +29,8 @@ int* MapGenerator::Generate()
 
     GenerateFloor();
     FixFloors();
+    GetFloorTiles();
+
     GenerateWalls();
     return Map;
 }
@@ -47,6 +50,11 @@ sf::Vector2i MapGenerator::GetMapSize()
     return sf::Vector2i(this->MapH,this->MapW);
 }
 
+sf::Vector2f MapGenerator::GetSpownPosition()
+{
+    return sf::Vector2f();
+}
+
 unsigned int MapGenerator::GetBufferSize()
 {
     return this->BufferSize;
@@ -57,14 +65,14 @@ unsigned int MapGenerator::GetBufferSize()
 
 void MapGenerator::GenerateFloor()
 {
-    int RoomsCount =  rand() % 5 + 5;
+    int RoomsCount =  rand() % (MapW/2) + 5;
 
     //generate Rooms at randome 
     for (int i = 0; i < RoomsCount; i++)
     {
         sf::Vector2i RoomSize, RoomPosition;
-        RoomSize.x = rand() % ((int)MapH / 3);
-        RoomSize.y = rand() % ((int)MapW / 3);
+        RoomSize.x = rand() % 5+4;
+        RoomSize.y = rand() % 5+4;
 
         if (RoomSize.x < 3)RoomSize.x += 3;
         if (RoomSize.y < 3)RoomSize.y += 3;
@@ -72,8 +80,8 @@ void MapGenerator::GenerateFloor()
         RoomPosition.x = rand() % (int)MapH+1 ;
         RoomPosition.y = rand() % (int)MapW+1 ;
 
-        if (RoomPosition.x + RoomSize.x > (int)MapW)RoomPosition.x -= RoomSize.x+1;
-        if (RoomPosition.y + RoomSize.y > (int)MapW)RoomPosition.y -= RoomSize.y+1;
+        if (RoomPosition.x + RoomSize.x > (int)MapW)RoomPosition.x -= RoomSize.x+2;
+        if (RoomPosition.y + RoomSize.y > (int)MapW)RoomPosition.y -= RoomSize.y+2;
 
         RoomsConnections.push_back(sf::Vector2u(RoomPosition.x+(RoomSize.x/2), RoomPosition.y + (RoomSize.x / 2)));
 
@@ -112,7 +120,19 @@ void MapGenerator::FixFloors()
                     Map[i + j * MapW] = FLOOR;
             }
         }
+    for (unsigned int i = 0; i < MapH; i++) {
+        Map[MapW * i+MapW-1] = BLANK;
+    }
+}
 
+void MapGenerator::GetFloorTiles()
+{
+    for (unsigned int i = 0; i < BufferSize; i++) {
+        if (Map[i] == FLOOR) {
+            FloorTiles++;
+        }
+    }
+    std::cout << FloorTiles;
 }
 
 void MapGenerator::GenerateCorridors(sf::Vector2u StartPoint, sf::Vector2u EndPoint)
@@ -123,25 +143,25 @@ void MapGenerator::GenerateCorridors(sf::Vector2u StartPoint, sf::Vector2u EndPo
     int FinalPoint=0;
 
     if (StartPoint.y < EndPoint.y) {
-        for (int i = 0; i <= EndPoint.y - StartPoint.y; i++) {
+        for (unsigned int i = 0; i <= EndPoint.y - StartPoint.y; i++) {
             Map[MapW * StartPoint.x + StartPoint.y +i] = FLOOR;
             FinalPoint = StartPoint.y+ i;
         }
     }
     else {
-        for (int i = 0; i <= StartPoint.y-EndPoint.y; i++) {
+        for (unsigned int i = 0; i <= StartPoint.y-EndPoint.y; i++) {
             Map[MapW * EndPoint.x + EndPoint.y + i] = FLOOR;
             FinalPoint = EndPoint.y+ i;
         }
     }
 
     if (StartPoint.x < EndPoint.x) {
-        for (int i = 0; i < EndPoint.x - StartPoint.x; i++) {
+        for (unsigned int i = 0; i < EndPoint.x - StartPoint.x; i++) {
             Map[MapW *(i+StartPoint.x) + FinalPoint] = FLOOR;
         }
     }
     else {
-        for (int i = 0; i < StartPoint.x - EndPoint.x; i++) {
+        for (unsigned int i = 0; i < StartPoint.x - EndPoint.x; i++) {
             Map[MapW * (i+EndPoint.x) + FinalPoint] = FLOOR;
         }
     }

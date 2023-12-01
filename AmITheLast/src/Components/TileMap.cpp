@@ -32,7 +32,7 @@ TileMap::TileMap(sf::Texture& texture, MapGenerator* mapGenerator)
             Mapping.x = Mapping.x * TileSize.x;
             Mapping.y = Mapping.y * TileSize.y;
 
-            ////// define its 4 texture coordinates
+            // define its 4 texture coordinates
             quad[0].texCoords = sf::Vector2f(Mapping);
             quad[1].texCoords = sf::Vector2f(Mapping.x+TileSize.x, Mapping.y);
             quad[2].texCoords = sf::Vector2f(Mapping.x+TileSize.y, Mapping.y + TileSize.y);
