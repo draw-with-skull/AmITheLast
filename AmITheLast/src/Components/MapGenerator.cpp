@@ -72,8 +72,8 @@ void MapGenerator::GenerateFloor()
         RoomPosition.x = rand() % (int)MapH+1 ;
         RoomPosition.y = rand() % (int)MapW+1 ;
 
-        if (RoomPosition.x + RoomSize.x > (int)MapW)RoomPosition.x -= RoomSize.x;
-        if (RoomPosition.y + RoomSize.y > (int)MapW)RoomPosition.y -= RoomSize.y;
+        if (RoomPosition.x + RoomSize.x > (int)MapW)RoomPosition.x -= RoomSize.x+1;
+        if (RoomPosition.y + RoomSize.y > (int)MapW)RoomPosition.y -= RoomSize.y+1;
 
         RoomsConnections.push_back(sf::Vector2u(RoomPosition.x+(RoomSize.x/2), RoomPosition.y + (RoomSize.x / 2)));
 
@@ -112,6 +112,7 @@ void MapGenerator::FixFloors()
                     Map[i + j * MapW] = FLOOR;
             }
         }
+
 }
 
 void MapGenerator::GenerateCorridors(sf::Vector2u StartPoint, sf::Vector2u EndPoint)
