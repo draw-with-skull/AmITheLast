@@ -34,9 +34,9 @@ TileMap::TileMap(sf::Texture& texture, MapGenerator* mapGenerator)
 
             ////// define its 4 texture coordinates
             quad[0].texCoords = sf::Vector2f(Mapping);
-            quad[1].texCoords = sf::Vector2f(Mapping.x,Mapping.y+TileSize.y);
+            quad[1].texCoords = sf::Vector2f(Mapping.x+TileSize.x, Mapping.y);
             quad[2].texCoords = sf::Vector2f(Mapping.x+TileSize.y, Mapping.y + TileSize.y);
-            quad[3].texCoords = sf::Vector2f(Mapping.x+TileSize.x, Mapping.y);
+            quad[3].texCoords = sf::Vector2f(Mapping.x,Mapping.y+TileSize.y);
         }
     
 }

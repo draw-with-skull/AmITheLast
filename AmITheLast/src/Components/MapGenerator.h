@@ -4,10 +4,12 @@
 #include <map>
 #include <SFML/System/Vector2.hpp>
 #include <iostream>
+#include <SFML/Graphics/RectangleShape.hpp>
 class MapGenerator
 {
 public:
     enum MAPCOMPONENTS {
+        NO_TEXTURE,
         BLANK,
         FLOOR,
         //WALLS
@@ -38,11 +40,14 @@ public:
     std::map<MAPCOMPONENTS, sf::Vector2f> Tilemapping;
 
 private:
-    void GenerateDefaultTileMapping();
 	void GenerateFloor();
+    void FixFloors();
+    void GenerateCorridors(sf::Vector2u StartPoint, sf::Vector2u EndPoint);
+    void GenerateWalls();
+    void GenerateDefaultTileMapping();
     unsigned int MapH, MapW ,BufferSize;
     unsigned int TileW, TileH;
-    
+    std::vector<sf::Vector2u> RoomsConnections;
 	int* Map;
 
 };
