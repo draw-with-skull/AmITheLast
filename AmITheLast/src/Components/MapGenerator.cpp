@@ -3,9 +3,11 @@
 
 MapGenerator::MapGenerator(unsigned int width, unsigned int height, unsigned int tileWidth, unsigned int tileHeight)
 {
+    
     srand((unsigned int)time(NULL));
     FloorTiles = 0;
     RoomsConnections.clear();
+    this->SetRoomsSize(3, 5, 3, 5);
     this->MapH = height;
     this->MapW = width;
     this->TileH = tileHeight;
@@ -60,8 +62,13 @@ unsigned int MapGenerator::GetBufferSize()
     return this->BufferSize;
 }
 
-
-
+void MapGenerator::SetRoomsSize(unsigned int MinRoomH, unsigned int MaxRoomH, unsigned int MinRoomW, unsigned int MaxRoomW)
+{
+    this->MinRoomH = MinRoomH;
+    this->MaxRoomH = MaxRoomH;
+    this->MinRoomW = MinRoomW;
+    this->MaxRoomW = MaxRoomW;
+}
 
 void MapGenerator::GenerateFloor()
 {
@@ -71,8 +78,8 @@ void MapGenerator::GenerateFloor()
     for (int i = 0; i < RoomsCount; i++)
     {
         sf::Vector2i RoomSize, RoomPosition;
-        RoomSize.x = rand() % 5+4;
-        RoomSize.y = rand() % 5+4;
+        RoomSize.x = rand() % MaxRoomH + MinRoomH;
+        RoomSize.y = rand() % MaxRoomW + MinRoomW;
 
         if (RoomSize.x < 3)RoomSize.x += 3;
         if (RoomSize.y < 3)RoomSize.y += 3;

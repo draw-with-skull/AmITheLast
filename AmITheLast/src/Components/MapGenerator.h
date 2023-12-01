@@ -38,6 +38,7 @@ public:
     sf::Vector2i GetMapSize();
     sf::Vector2f GetSpownPosition();
     unsigned int GetBufferSize();
+    void SetRoomsSize(unsigned int MinRoomH, unsigned int MaxRoomH, unsigned int MinRoomW, unsigned int MaxRoomW);
 
     std::map<MAPCOMPONENTS, sf::Vector2f> Tilemapping;
 
@@ -48,9 +49,11 @@ private:
     void GenerateCorridors(sf::Vector2u StartPoint, sf::Vector2u EndPoint);
     void GenerateWalls();
     void GenerateDefaultTileMapping();
+    unsigned int MinRoomH, MaxRoomH, MinRoomW, MaxRoomW;
     unsigned int BufferSize, FloorTiles;
     unsigned int MapH, MapW;
     unsigned int TileW, TileH;
+
     std::vector<sf::Vector2u> RoomsConnections;
 	int* Map;
 
