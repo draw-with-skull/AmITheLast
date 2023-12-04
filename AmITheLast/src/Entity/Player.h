@@ -10,7 +10,7 @@ public:
 	// Inherited via Entity
 	virtual void Update(const float& dt) override;
 	virtual void Render(sf::RenderTarget* target) override;
-
+	void SetPosition(sf::Vector2f position);
 	sf::Vector2f GetPosition();
 private:
 	void UpdateState();

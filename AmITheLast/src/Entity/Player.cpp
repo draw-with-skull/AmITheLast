@@ -26,6 +26,11 @@ void Player::Render(sf::RenderTarget* target)
 	this->Animations->Render(target);
 }
 
+void Player::SetPosition(sf::Vector2f position)
+{
+	this->Position = position;
+}
+
 sf::Vector2f Player::GetPosition()
 {
 	return this->Position;
@@ -69,8 +74,6 @@ void Player::UpdatePosition(const float&dt)
 void Player::Init()
 {
 	this->MovementSpeed = 200;
-	this->Position.x = 200;
-	this->Position.y = 200;
 
 	this->Texture = AssetImporter().ImportTexture("Lady_Dino", AssetType::CHARACTER);
 	this->Sprite.setTexture(this->Texture);

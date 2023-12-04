@@ -45,7 +45,7 @@ public:
 private:
 	void GenerateFloor();
     void FixFloors();
-    void GetFloorTiles();
+    void GetFloorTilesCount();
     void GenerateCorridors(sf::Vector2u StartPoint, sf::Vector2u EndPoint);
     void GenerateWalls();
     void GenerateDefaultTileMapping();
@@ -53,8 +53,9 @@ private:
     unsigned int BufferSize, FloorTiles;
     unsigned int MapH, MapW;
     unsigned int TileW, TileH;
-
+    int RoomsCount;
     std::vector<sf::Vector2u> RoomsConnections;
+    std::vector<sf::IntRect>Rooms;
 	int* Map;
 
 };
