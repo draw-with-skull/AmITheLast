@@ -11,9 +11,9 @@ Game::Game()
 Game::~Game()
 {
 	delete this->Window;
-	while (!this->states.empty()) {
-		delete this->states.top();
-		this->states.pop();
+	while (!this->States.empty()) {
+		delete this->States.top();
+		this->States.pop();
 	}
 }
 
@@ -35,8 +35,8 @@ void Game::UpdateSFMLEvents()
 void Game::Render()
 {
 	this->Window->clear();
-	if (!this->states.empty()) {
-		this->states.top()->Render();
+	if (!this->States.empty()) {
+		this->States.top()->Render();
 	}
 	this->Window->display();
 }
@@ -44,14 +44,14 @@ void Game::Render()
 void Game::Update()
 {
 	this->UpdateSFMLEvents();
-	if (!this->states.empty()) {
-		this->states.top()->Update(this->Dt);
+	if (!this->States.empty()) {
+		this->States.top()->Update(this->Dt);
 
 
 
-		if (this->states.top()->GetQuit()) {
-			delete this->states.top();
-			this->states.pop();
+		if (this->States.top()->GetQuit()) {
+			delete this->States.top();
+			this->States.pop();
 		}
 	}
 	else {
@@ -79,5 +79,5 @@ void Game::InitWindow()
 
 void Game::InitStates()
 {
-	this->states.push(new TestState(this->Window,&this->View));
+	this->States.push(new TestState(this->Window,&this->View));
 }

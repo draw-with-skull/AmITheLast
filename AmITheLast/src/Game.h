@@ -28,7 +28,7 @@ private:
 	sf::Event SfEvent;
 	sf::Clock Clock;
 	sf::View View;
-	std::stack<State*> states;
+	std::stack<State*> States;
 	
 	const unsigned int PixelSize{ 3u };
 	float Dt;
