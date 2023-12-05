@@ -33,6 +33,7 @@ int* MapGenerator::Generate()
     FixFloors();
 
     GenerateWalls();
+    GetFloorTilesCount();
     return Map;
 }
 
@@ -53,10 +54,10 @@ sf::Vector2i MapGenerator::GetMapSize()
 
 sf::Vector2f MapGenerator::GetSpownPosition()
 {
-    sf::Vector2u Position = this->RoomsConnections[rand() % RoomsCount];
-    Position *= TileW;
-    printf("%i  %i", Position.x, Position.y);
-    return sf::Vector2f(Position);
+
+    sf::Vector2u Position = RoomsConnections[rand() % RoomsCount];
+    
+    return sf::Vector2f(Position.y*TileH + (TileH / 2), Position.x*TileW + (TileW/2));
 }
 
 unsigned int MapGenerator::GetBufferSize()
@@ -137,6 +138,7 @@ void MapGenerator::FixFloors()
     for (unsigned int i = 0; i < MapH; i++) {
         Map[MapW * (MapW - 1)+i] = BLANK;
     }
+
 }
 
 void MapGenerator::GetFloorTilesCount()

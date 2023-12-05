@@ -1,11 +1,11 @@
 #include "TestState.h"
-
+#include <SFML/Window/Mouse.hpp>
 
 TestState::TestState(sf::RenderWindow* window, sf::View *view):State(window)
 {
 	this->View = view;
 	this->RoomTexture = AssetImporter().ImportTexture("Dangeon", AssetType::ROOM);
-	this->MapG = new MapGenerator(40, 32, 32, 32);
+	this->MapG = new MapGenerator(32,32, 32, 32);
 	this->Room = new TileMap(this->RoomTexture,MapG);
 	this->Player.SetPosition(MapG->GetSpownPosition());
 }
@@ -22,7 +22,7 @@ void TestState::Update(const float& dt)
 	this->UpdateKeyBinds(dt);
 	this->Player.Update(dt);
 	this->View->setCenter(this->Player.GetPosition());
-
+	
 }
 
 void TestState::Render(sf::RenderTarget* target)
@@ -31,6 +31,7 @@ void TestState::Render(sf::RenderTarget* target)
 	target->setView(*View);
 	target->draw(*this->Room);
 	this->Player.Render(target);
+
 }
 
 
