@@ -8,6 +8,7 @@ TestState::TestState(sf::RenderWindow* window, sf::View *view):State(window)
 	this->RoomTexture = AssetImporter().ImportTexture("Dangeon", AssetType::ROOM);
 	this->MapG = new MapGenerator(32,32, 32, 32);
 	this->Room = new TileMap(this->RoomTexture,MapG);
+	this->Collisions = this->MapG->GetColisions();
 	this->Player.SetPosition(MapG->GetSpownPosition());
 }
 

@@ -33,6 +33,7 @@ int* MapGenerator::Generate()
     this->FixFloors();
 
     this->GenerateWalls();
+    this->GenerateCollisions();
     this->GetFloorTilesCount();
     return Map;
 }
@@ -58,6 +59,11 @@ sf::Vector2f MapGenerator::GetSpownPosition()
     sf::Vector2u Position = RoomsConnections[rand() % RoomsCount];
     
     return sf::Vector2f((float)(Position.y * TileH + (TileH / 2)), (float)(Position.x * TileW + (TileW / 2)));
+}
+
+std::vector<sf::FloatRect> MapGenerator::GetColisions()
+{
+    return this->Collisions;
 }
 
 unsigned int MapGenerator::GetBufferSize()
@@ -262,4 +268,14 @@ void MapGenerator::GenerateDefaultTileMapping()
     Tilemapping[RIGHT_BOTTOM_CORNER] = sf::Vector2f(2, 3);
     Tilemapping[RIGHT_TOP_CORNER] = sf::Vector2f(0, 2);
     Tilemapping[NO_TEXTURE] = sf::Vector2f(5,7);
+}
+
+void MapGenerator::GenerateCollisions()
+{
+    for (unsigned int i = 0; i < MapW; i++)
+        for (unsigned int j = 0; j < MapH; j++) {
+            if (Map[MapW * i + j ] != BLANK && Map[MapW * i + j ] != FLOOR) {
+                Collisions.push_back(sf::FloatRect(i * MapW, j * MapH, this->MapW, this->MapH));
+            }
+        }
 }

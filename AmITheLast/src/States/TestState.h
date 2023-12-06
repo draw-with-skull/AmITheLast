@@ -16,10 +16,11 @@ public:
 
 private:
     Player Player;
-    TileMap *Room;
+    TileMap* Room;
+    MapGenerator* MapG;
     sf::View* View; 
     sf::Texture RoomTexture;
-    MapGenerator* MapG;
+    std::vector<sf::FloatRect>Collisions;
     
 };
 #endif
