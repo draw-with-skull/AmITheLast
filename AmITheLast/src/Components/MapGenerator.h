@@ -31,14 +31,16 @@ public:
 
     MapGenerator(unsigned int width, unsigned int height, unsigned int tileWidth, unsigned int tileHeight);
     virtual ~MapGenerator();
+
 	int* Generate();
 	void MapTiles(std::map<MAPCOMPONENTS,sf::Vector2f>mapping);
 
     sf::Vector2u GetTileSize();
     sf::Vector2i GetMapSize();
     sf::Vector2f GetSpownPosition();
+
     unsigned int GetBufferSize();
-    void SetRoomsSize(unsigned int MinRoomH, unsigned int MaxRoomH, unsigned int MinRoomW, unsigned int MaxRoomW);
+    void SetRoomsSize(unsigned int minRoomH, unsigned int maxRoomH, unsigned int minRoomW, unsigned int maxRoomW);
 
     std::map<MAPCOMPONENTS, sf::Vector2f> Tilemapping;
 
@@ -46,17 +48,20 @@ private:
 	void GenerateFloor();
     void FixFloors();
     void GetFloorTilesCount();
-    void GenerateCorridors(sf::Vector2u StartPoint, sf::Vector2u EndPoint);
+    void GenerateCorridors(sf::Vector2u startPoint, sf::Vector2u endPoint);
     void GenerateWalls();
     void GenerateDefaultTileMapping();
+
     unsigned int MinRoomH, MaxRoomH, MinRoomW, MaxRoomW;
     unsigned int BufferSize, FloorTiles;
     unsigned int MapH, MapW;
     unsigned int TileW, TileH;
+
     int RoomsCount;
+	int* Map;
+    sf::IntRect* Collisions;
     std::vector<sf::Vector2u> RoomsConnections;
     std::vector<sf::IntRect>Rooms;
-	int* Map;
 
 };
 

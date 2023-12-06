@@ -4,6 +4,7 @@
 TestState::TestState(sf::RenderWindow* window, sf::View *view):State(window)
 {
 	this->View = view;
+	this->window = window;
 	this->RoomTexture = AssetImporter().ImportTexture("Dangeon", AssetType::ROOM);
 	this->MapG = new MapGenerator(32,32, 32, 32);
 	this->Room = new TileMap(this->RoomTexture,MapG);

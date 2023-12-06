@@ -5,8 +5,8 @@ MapGenerator::MapGenerator(unsigned int width, unsigned int height, unsigned int
 {
     
     srand((unsigned int)time(NULL));
-    FloorTiles = 0;
-    RoomsConnections.clear();
+    this->FloorTiles = 0;
+    this->RoomsConnections.clear();
     this->SetRoomsSize(3, 5, 3, 5);
     this->MapH = height;
     this->MapW = width;
@@ -16,7 +16,7 @@ MapGenerator::MapGenerator(unsigned int width, unsigned int height, unsigned int
     this->Map = new int[BufferSize];
     //reset all values in the map
     for (unsigned int i = 0; i < this->BufferSize; i++) {
-        Map[i] = BLANK;
+        this->Map[i] = BLANK;
     }
 }
 
@@ -27,13 +27,13 @@ MapGenerator::~MapGenerator()
 
 int* MapGenerator::Generate()
 {
-    GenerateDefaultTileMapping();
+    this->GenerateDefaultTileMapping();
 
-    GenerateFloor();
-    FixFloors();
+    this->GenerateFloor();
+    this->FixFloors();
 
-    GenerateWalls();
-    GetFloorTilesCount();
+    this->GenerateWalls();
+    this->GetFloorTilesCount();
     return Map;
 }
 
@@ -57,7 +57,7 @@ sf::Vector2f MapGenerator::GetSpownPosition()
 
     sf::Vector2u Position = RoomsConnections[rand() % RoomsCount];
     
-    return sf::Vector2f(Position.y*TileH + (TileH / 2), Position.x*TileW + (TileW/2));
+    return sf::Vector2f((float)(Position.y * TileH + (TileH / 2)), (float)(Position.x * TileW + (TileW / 2)));
 }
 
 unsigned int MapGenerator::GetBufferSize()
@@ -65,22 +65,23 @@ unsigned int MapGenerator::GetBufferSize()
     return this->BufferSize;
 }
 
-void MapGenerator::SetRoomsSize(unsigned int MinRoomH, unsigned int MaxRoomH, unsigned int MinRoomW, unsigned int MaxRoomW)
+void MapGenerator::SetRoomsSize(unsigned int minRoomH, unsigned int maxRoomH, unsigned int minRoomW, unsigned int maxRoomW)
 {
-    this->MinRoomH = MinRoomH;
-    this->MaxRoomH = MaxRoomH;
-    this->MinRoomW = MinRoomW;
-    this->MaxRoomW = MaxRoomW;
+    this->MinRoomH = minRoomH;
+    this->MaxRoomH = maxRoomH;
+    this->MinRoomW = minRoomW;
+    this->MaxRoomW = maxRoomW;
 }
 
 void MapGenerator::GenerateFloor()
 {
     this->RoomsCount =  rand() % (MapW/2) + 5;
+    sf::Vector2i RoomSize, RoomPosition;
 
     //generate Rooms at randome 
     for (int i = 0; i < RoomsCount; i++)
     {
-        sf::Vector2i RoomSize, RoomPosition;
+        
         RoomSize.x = rand() % (MaxRoomH-MinRoomH) +MinRoomH;
         RoomSize.y = rand() % (MaxRoomW-MinRoomW) +MinRoomW;
 
@@ -93,30 +94,28 @@ void MapGenerator::GenerateFloor()
         if (RoomPosition.x + RoomSize.x > (int)MapW)RoomPosition.x -= RoomSize.x+2;
         if (RoomPosition.y + RoomSize.y > (int)MapW)RoomPosition.y -= RoomSize.y+2;
 
-        RoomsConnections.push_back(sf::Vector2u(RoomPosition.x+(RoomSize.x/2), RoomPosition.y + (RoomSize.x / 2)));
-        Rooms.push_back(sf::IntRect(RoomPosition, RoomSize));
+        this->RoomsConnections.push_back(sf::Vector2u(RoomPosition.x+(RoomSize.x/2), RoomPosition.y + (RoomSize.x / 2)));
+        this->Rooms.push_back(sf::IntRect(RoomPosition, RoomSize));
 
         for (int i = 0;i<RoomSize.x;i++)
             for (int j =0; j < RoomSize.y; j++)
             {
                 int row = ((MapW * RoomPosition.x) + RoomPosition.y)+i*MapW;
-                Map[row+j] = FLOOR;
+                this->Map[row+j] = FLOOR;
             }
     }
     //Generate corridors
 
     for (int i = 0; i < RoomsConnections.size()-1; i++) {
 
-        Map[RoomsConnections[i].x * MapW + RoomsConnections[i].y] = FLOOR;
-        Map[RoomsConnections[i+1].x * MapW + RoomsConnections[i+1].y] = FLOOR;
+        this->Map[RoomsConnections[i].x * MapW + RoomsConnections[i].y] = FLOOR;
+        this->Map[RoomsConnections[i+1].x * MapW + RoomsConnections[i+1].y] = FLOOR;
 
-        GenerateCorridors(RoomsConnections[i], RoomsConnections[i + 1]);
+        this->GenerateCorridors(RoomsConnections[i], RoomsConnections[i + 1]);
 
     }
 
 }
-
-
 
 void MapGenerator::FixFloors()
 {
@@ -126,17 +125,17 @@ void MapGenerator::FixFloors()
             //1 tile gap between rooms
             if (Map[i + j * MapW] != FLOOR) {
                 if (Map[(i + j * MapW) - MapW] == FLOOR && Map[(i + j * MapW) + MapW] == FLOOR)
-                    Map[i + j * MapW] = FLOOR;
+                    this->Map[i + j * MapW] = FLOOR;
                 if (Map[(i + j * MapW) - 1] == FLOOR && Map[(i + j * MapW) + 1] == FLOOR)
-                    Map[i + j * MapW] = FLOOR;
+                    this->Map[i + j * MapW] = FLOOR;
             }
         }
     //Generation bugs
     for (unsigned int i = 0; i < MapH; i++) {
-        Map[MapW * i+MapW-1] = BLANK;
+        this->Map[MapW * i+MapW-1] = BLANK;
     }
     for (unsigned int i = 0; i < MapH; i++) {
-        Map[MapW * (MapW - 1)+i] = BLANK;
+        this->Map[MapW * (MapW - 1)+i] = BLANK;
     }
 
 }
@@ -145,39 +144,39 @@ void MapGenerator::GetFloorTilesCount()
 {
     for (unsigned int i = 0; i < BufferSize; i++) {
         if (Map[i] == FLOOR) {
-            FloorTiles++;
+            this->FloorTiles++;
         }
     }
 }
 
-void MapGenerator::GenerateCorridors(sf::Vector2u StartPoint, sf::Vector2u EndPoint)
+void MapGenerator::GenerateCorridors(sf::Vector2u startPoint, sf::Vector2u endPoint)
 {
     //x e in jos si y e la dreapta 
     
     
     int FinalPoint=0;
 
-    if (StartPoint.y < EndPoint.y) {
-        for (unsigned int i = 0; i <= EndPoint.y - StartPoint.y; i++) {
-            Map[MapW * StartPoint.x + StartPoint.y +i] = FLOOR;
-            FinalPoint = StartPoint.y+ i;
+    if (startPoint.y < endPoint.y) {
+        for (unsigned int i = 0; i <= endPoint.y - startPoint.y; i++) {
+            this->Map[MapW * startPoint.x + startPoint.y +i] = FLOOR;
+            FinalPoint = startPoint.y+ i;
         }
     }
     else {
-        for (unsigned int i = 0; i <= StartPoint.y-EndPoint.y; i++) {
-            Map[MapW * EndPoint.x + EndPoint.y + i] = FLOOR;
-            FinalPoint = EndPoint.y+ i;
+        for (unsigned int i = 0; i <= startPoint.y-endPoint.y; i++) {
+            this->Map[MapW * endPoint.x + endPoint.y + i] = FLOOR;
+            FinalPoint = endPoint.y+ i;
         }
     }
 
-    if (StartPoint.x < EndPoint.x) {
-        for (unsigned int i = 0; i < EndPoint.x - StartPoint.x; i++) {
-            Map[MapW *(i+StartPoint.x) + FinalPoint] = FLOOR;
+    if (startPoint.x < endPoint.x) {
+        for (unsigned int i = 0; i < endPoint.x - startPoint.x; i++) {
+            this->Map[MapW *(i+startPoint.x) + FinalPoint] = FLOOR;
         }
     }
     else {
-        for (unsigned int i = 0; i < StartPoint.x - EndPoint.x; i++) {
-            Map[MapW * (i+EndPoint.x) + FinalPoint] = FLOOR;
+        for (unsigned int i = 0; i < startPoint.x - endPoint.x; i++) {
+            this->Map[MapW * (i+endPoint.x) + FinalPoint] = FLOOR;
         }
     }
     
@@ -232,10 +231,6 @@ void MapGenerator::GenerateWalls()
                     Map[(i + j * MapW) - 1 + MapW] = LEFT_BOTTOM_CORNER;
                 }
 
-
-
-
-               
             }
             
             //Nasty Wall Bug; Temp fix
