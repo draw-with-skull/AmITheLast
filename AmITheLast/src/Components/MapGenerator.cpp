@@ -274,7 +274,7 @@ void MapGenerator::GenerateCollisions()
 {
     for (unsigned int i = 0; i < MapW; i++)
         for (unsigned int j = 0; j < MapH; j++) {
-            if (Map[MapW * i + j ] != BLANK && Map[MapW * i + j ] != FLOOR) {
+            if (Map[MapW * j + i ] != BLANK && Map[MapW * j + i ] != FLOOR) {
                 Collisions.push_back(sf::FloatRect(i * MapW, j * MapH, this->MapW, this->MapH));
             }
         }
