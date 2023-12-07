@@ -25,6 +25,10 @@ void Player::Update(const float& dt)
 void Player::Render(sf::RenderTarget* target)
 {
 	this->Animations->Render(target);
+	/*sf::RectangleShape HB, LHB;
+	LHB.setPosition(LegHitBox.getPosition());
+	LHB.setSize(LegHitBox.getSize());
+	target->draw(LHB);*/
 }
 
 void Player::SetPosition(sf::Vector2f position)
@@ -47,6 +51,16 @@ void Player::SetLegHitBox(unsigned int width, unsigned int height, unsigned int 
 	this->LegHitBox.height = height;
 	this->LegHitBox.top = this->Position.y + offsetY - (height / 2.f);
 	this->LegHitBox.left = this->Position.x + offsetX - (width / 2.f);
+}
+
+void Player::HitAWall()
+{
+	sf::Vector2f Diff = Position - OldPosition;
+	Position -= Diff;
+	LegHitBox.top -= Diff.y;
+	LegHitBox.left -= Diff.x;
+	HitBox.top -= Diff.y;
+	HitBox.left -= Diff.x;
 }
 
 sf::Vector2f Player::GetPosition()
@@ -96,7 +110,7 @@ void Player::UpdateState()
 void Player::UpdatePosition(const float&dt)
 {
 	sf::Vector2f MoveAmount = this->Direction * dt * this->MovementSpeed;
-
+	this->OldPosition = Position;
 	this->Position += MoveAmount;
 	//Update hitbox position
 	this->HitBox.top += MoveAmount.y;

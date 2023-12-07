@@ -27,11 +27,9 @@ void TestState::Update(const float& dt)
 	this->Player.Update(dt);
 	this->View->setCenter(this->Player.GetPosition());
 	if (Intersection::Check(Player.GetLegHitBox(), Collisions)) {
-		printf("collision\n");
+		this->Player.HitAWall();
 	}
-	else {
-		printf("no collision\n");
-	}
+	
 	
 }
 
@@ -41,13 +39,13 @@ void TestState::Render(sf::RenderTarget* target)
 	target->setView(*View);
 	target->draw(*this->Room);
 	this->Player.Render(target);
-	sf::RectangleShape r;
+	/*sf::RectangleShape r;
 	for (int i = 0; i < Collisions.size(); i++) {
 		r.setSize(Collisions[i].getSize());
 		r.setPosition(Collisions[i].getPosition());
 		r.setFillColor(sf::Color::Red);
 		target->draw(r);
-	}
+	}*/
 
 
 }

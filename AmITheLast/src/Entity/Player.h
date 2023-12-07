@@ -14,6 +14,9 @@ public:
 	void SetPosition(sf::Vector2f position);
 	void SetHitBox(unsigned int width, unsigned int height,unsigned int offsetX,unsigned int offsetY);
 	void SetLegHitBox(unsigned int width, unsigned int height, unsigned int offsetX, unsigned int offsetY);
+
+	void HitAWall();
+
 	sf::Vector2f GetPosition();
 	sf::FloatRect GetHitBox();
 	sf::FloatRect GetLegHitBox();
@@ -24,7 +27,7 @@ private:
 	void InitAnimations();
 	AnimationManager *Animations;
 	AnimationState CurrentState;
-	sf::Vector2f Position, Direction;
+	sf::Vector2f OldPosition,Position, Direction;
 	sf::FloatRect HitBox,LegHitBox;
 };
 
