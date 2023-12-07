@@ -4,6 +4,7 @@
 #include "Entity/Player.h"
 #include "Components/TileMap.h"
 #include <Components/MapGenerator.h>
+#include "Physics/Intersection.h"
 
 class TestState :public State
 {

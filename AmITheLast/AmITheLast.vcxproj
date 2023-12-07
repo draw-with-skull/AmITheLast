@@ -131,6 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Physics\Intersection.cpp" />
     <ClCompile Include="src\Components\MapGenerator.cpp" />
     <ClCompile Include="src\Components\Animation.cpp" />
     <ClCompile Include="src\Managers\AnimationManager.cpp" />
@@ -144,6 +145,7 @@
     <ClCompile Include="src\Components\TileMap.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Physics\Intersection.h" />
     <ClInclude Include="src\Components\MapGenerator.h" />
     <ClInclude Include="src\Components\Animation.h" />
     <ClInclude Include="src\Managers\AnimationManager.h" />
